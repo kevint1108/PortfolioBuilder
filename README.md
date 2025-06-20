@@ -22,7 +22,6 @@ ScreenShot
 ![Screenshot 2025-06-20 045414](https://github.com/user-attachments/assets/aed0d099-d742-4aec-8404-c0548b2dac5d)
 ![Screenshot 2025-06-20 045314](https://github.com/user-attachments/assets/ea888547-c8c9-49c7-94c9-fd027936465e)
 ![Screenshot 2025-06-20 045233](https://github.com/user-attachments/assets/3a25378e-5f54-4894-93f3-3681ead18659)
-![Screenshot 2025-06-20 045203](https://github.com/user-attachments/assets/58307801-ba05-429d-a618-2addc3784225)
 
 
 🚀 Getting Started
