@@ -1,0 +1,30 @@
+﻿@model PortfolioBuilder.Models.Project
+
+@{
+    ViewData["Title"] = "Project Detail";
+}
+
+<div class="container py-5">
+    <h1 class="mb-4">@Model.Title</h1>
+
+    <p class="text-muted">Platform: <strong>@Model.Description</strong></p>
+
+    @if (!string.IsNullOrEmpty(Model.ImageName))
+    {
+        var images = Model.ImageName.Split(',', StringSplitOptions.RemoveEmptyEntries);
+        <div class="row">
+            @foreach (var img in images)
+            {
+                <div class="col-md-4 mb-3">
+                    <img src="~/images/Project/@img.Trim()" class="img-fluid rounded shadow-sm" alt="Project image" />
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No images available for this project.</p>
+    }
+
+    <a href="@Url.Action("Index", "Portfolio")" class="btn btn-secondary mt-4">Back to Portfolio</a>
+</div>
