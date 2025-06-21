@@ -1,5 +1,6 @@
 🧰 Portfolio Builder
-A responsive, customizable portfolio builder designed to help developers, designers, and creatives showcase their work online with ease. Built with modern web technologies, this project offers a clean, minimal UI and dynamic content configuration — no backend required.
+
+The Portfolio Builder Project is a personal website designed to showcase your professional profile, technical skills, and project work in a clean, responsive, and customizable format. This project aims to help individuals create a strong online presence and share their work with potential employers, clients, or collaborators.
 
 ✨ Features
 🌐 Fully responsive design (desktop, tablet, mobile)
