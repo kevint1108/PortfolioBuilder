@@ -1,40 +1,40 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using PortfolioBuilder.Data;
 using PortfolioBuilder.Models;
 
-public class PortfolioController : Controller
+namespace PortfolioBuilder.Controllers
 {
-    public IActionResult Privacy()
+    public class PortfolioController : Controller
     {
-        return View();
-    }
-    public IActionResult Index()
-    {
-        var portfolio = new Portfolio
+        public IActionResult Index()
         {
-            FullName = "Binh Tang",
-            Bio = "Software Application Developer",
-            Avatar = "/images/me.jpg",
-            Skills = new List<Skill>
-        {
-            new Skill { Name = "C#" },
-            new Skill { Name = ".Net MAUI" },
-            new Skill { Name = "SQL" },
-            new Skill { Name = "Javascript"},
-            new Skill { Name = "HTML/CSS"},
-            new Skill { Name = "Flutter"},
-            new Skill { Name = "React + Vite"}
-        },
-            Projects = new List<Project>
-            {
-                new Project { Id = 1, Title = "Quick Kids Quiz", Description = ".Net MAUI and C#", ImageName = "MainMenu.jpg", GitHubUrl = "https://github.com/kevint1108/Quick-Kids-Quiz"},
-                new Project { Id = 2, Title = "App ToDo", Description = "React + Vite", ImageName = "todoapp.png", GitHubUrl = "https://github.com/kevint1108/todo" },
-                new Project { Id = 3, Title = "Icecream Shopping Cart", Description = "HTML/CSS and Javascript", ImageName = "Icecream shopping cart project.png", GitHubUrl = "https://github.com/kevint1108/Icecream-Shopping-Cart-Project" },
-                new Project { Id = 4, Title = "Trivia Game", Description = "Flutter", ImageName = "Question(trivia).jpg", GitHubUrl = "https://github.com/kevint1108/Trivia_game" },
-                new Project { Id = 5, Title = "Flutter Dice Project App", Description = "Flutter", ImageName = "D20App.jpg", GitHubUrl = "https://github.com/kevint1108/Flutterproject"},
-                new Project { Id = 6, Title = "12H Food Delivery", Description = "Fullstack Developer", ImageName = "Frontend of 12H.png", GitHubUrl = "https://github.com/kevint1108/12H_Food_Delivery" },
-            }
-        };
+            return View(PortfolioData.Portfolio);
+        }
 
-        return View(portfolio);
+        public IActionResult About()
+        {
+            return View(PortfolioData.Portfolio);
+        }
+
+        // Old link kept so bookmarks to /Portfolio/Privacy still work.
+        public IActionResult Privacy()
+        {
+            return RedirectToActionPermanent(nameof(About));
+        }
+
+        [Route("/error/{statusCode:int?}")]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error(int? statusCode)
+        {
+            var code = statusCode ?? 500;
+            Response.StatusCode = code;
+
+            return View(new ErrorViewModel
+            {
+                StatusCode = code,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            });
+        }
     }
 }

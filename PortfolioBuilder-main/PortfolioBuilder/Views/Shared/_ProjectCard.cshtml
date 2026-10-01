@@ -1,0 +1,30 @@
+@model Project
+@{
+    var detailUrl = Url.Action("Detail", "Project", new { id = Model.Id });
+    var cardClass = Model.Featured ? "project project--featured" : "project";
+}
+<article class="@cardClass">
+    <a class="project__cover project__cover--@Model.Platform.ToString().ToLowerInvariant()" href="@detailUrl" tabindex="-1" aria-hidden="true">
+        @if (Model.Cover != null)
+        {
+            <partial name="_Screenshot" model="new ScreenshotViewModel(Model.Cover, Model.Platform)" />
+        }
+    </a>
+    <div class="project__body">
+        <h3 class="project__title"><a href="@detailUrl">@Model.Title</a></h3>
+        <p class="project__summary">@Model.Summary</p>
+        <ul class="tags" aria-label="Built with">
+            @foreach (var tech in Model.TechStack)
+            {
+                <li>@tech</li>
+            }
+        </ul>
+        <div class="project__links">
+            <a class="link-strong" href="@detailUrl">View project</a>
+            @if (!string.IsNullOrEmpty(Model.GitHubUrl))
+            {
+                <a class="link-quiet" href="@Model.GitHubUrl" target="_blank" rel="noopener"><partial name="_GitHubIcon" />Code</a>
+            }
+        </div>
+    </div>
+</article>

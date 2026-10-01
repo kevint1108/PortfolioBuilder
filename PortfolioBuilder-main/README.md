@@ -1,55 +1,49 @@
-🧰 Portfolio Builder
+# Portfolio Builder
 
-The Portfolio Builder Project is a personal website designed to showcase your professional profile, technical skills, and project work in a clean, responsive, and customizable format. This project aims to help individuals create a strong online presence and share their work with potential employers, clients, or collaborators.
+Personal portfolio site for **Binh Tang**, built with ASP.NET Core MVC (.NET 8). It lists my skills and projects, with a page for each project that shows its screenshots in a phone or browser frame.
 
-✨ Features
-🌐 Fully responsive design (desktop, tablet, mobile)
+## Projects shown
 
-⚙️ Easy configuration with a JSON or markdown file
+| Project | Type | Built with |
+| --- | --- | --- |
+| [12H Food Delivery](https://github.com/kevint1108/12H_Food_Delivery) | Web | React, Node.js, MongoDB, Stripe, Cloudinary |
+| [To-Do Board](https://github.com/kevint1108/todo) | Web | React, Vite |
+| [Ice Cream Shopping Cart](https://github.com/kevint1108/Icecream-Shopping-Cart-Project) | Web | HTML, CSS, JavaScript |
+| [Quick Kids Quiz](https://github.com/kevint1108/Quick-Kids-Quiz) | Mobile | C#, .NET MAUI |
+| [Trivia Game](https://github.com/kevint1108/Trivia_game) | Mobile | Flutter |
+| [Flutter Dice App](https://github.com/kevint1108/Flutterproject) | Mobile | Flutter |
 
-🎨 Dark/light theme toggle
+## Run it locally
 
-📁 Project showcase with images, links, and tech stack tags
+Requires the [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
 
-📫 Contact section with social media links and contact form (optional)
+```bash
+cd PortfolioBuilder
+dotnet run
+```
 
-🛠️ Built with React / Next.js / Tailwind CSS (replace based on your stack)
+Then open the URL printed in the terminal (for example http://localhost:5166). You can also open `PortfolioBuilder.sln` in Visual Studio and press F5.
 
-ScreenShot
-<img width="609" alt="Quick_kid_Quiz experience" src="https://github.com/user-attachments/assets/49ee71de-866b-4e3d-a64e-a110440c98bf" />
-![Screenshot 2025-06-20 045617](https://github.com/user-attachments/assets/eaad779e-ede1-4514-8c9d-ce50e40a3624)
-![Screenshot 2025-06-20 045542](https://github.com/user-attachments/assets/2bb9b9d4-a890-474f-b3ba-841e00a89b3b)
-![Screenshot 2025-06-20 045450](https://github.com/user-attachments/assets/e361b4cb-9237-4ebc-83ee-bece3041dce0)
-![Screenshot 2025-06-20 045414](https://github.com/user-attachments/assets/aed0d099-d742-4aec-8404-c0548b2dac5d)
-![Screenshot 2025-06-20 045314](https://github.com/user-attachments/assets/ea888547-c8c9-49c7-94c9-fd027936465e)
-![Screenshot 2025-06-20 045233](https://github.com/user-attachments/assets/3a25378e-5f54-4894-93f3-3681ead18659)
+## Edit the content
 
+Everything the site shows lives in one file: `PortfolioBuilder/Data/PortfolioData.cs`.
 
-🚀 Getting Started
-Clone the repository:
+- **Name, intro, About text, skills:** edit the fields at the top.
+- **Contact links:** fill in `Email`, `LinkedInUrl` or `ResumeUrl`. Empty values are hidden on the site.
+- **Add a project:** copy one `new Project { ... }` block, give it a new `Id`, set `Platform` to `Mobile` or `Web`, and list its screenshots. The first screenshot is the cover image.
+- **Screenshots:** put the files in `wwwroot/images/Project/`. File names are case-sensitive once deployed on Linux, so they must match exactly.
 
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/portfolio-builder.git
-cd portfolio-builder
-Install dependencies:
+## Project structure
 
-bash
-Copy
-Edit
-npm install
-Customize your content:
+```
+PortfolioBuilder/
+  Controllers/   PortfolioController (home, About, errors), ProjectController (project pages)
+  Data/          PortfolioData.cs — all site content
+  Models/        Portfolio, Project, ProjectImage, view models
+  Views/         Razor views and partials
+  wwwroot/       CSS, JavaScript, images
+```
 
-Edit config.json or .md files with your personal and project info.
+## Deploy
 
-Run the development server:
-
-bash
-Copy
-Edit
-npm run dev
-Deploy to Vercel, Netlify, or GitHub Pages.
-
-📌 Demo
-Live Demo →
+The app reads the `PORT` environment variable, so it runs on hosts such as Render or Railway without changes. Build command: `dotnet publish -c Release -o out`, start command: `dotnet out/PortfolioBuilder.dll`.

@@ -1,30 +1,103 @@
-﻿@model PortfolioBuilder.Models.Project
-
+@model Project
 @{
-    ViewData["Title"] = "Project Detail";
+    ViewData["Title"] = Model.Title;
+    ViewData["Description"] = Model.Summary;
+    var next = ViewData["Next"] as Project;
+    var isPhone = Model.Platform == ProjectPlatform.Mobile;
 }
 
-<div class="container py-5">
-    <h1 class="mb-4">@Model.Title</h1>
+<article class="page">
+    <div class="wrap">
+        <a class="back-link" href="@Url.Action("Index", "Portfolio")#projects">All projects</a>
 
-    <p class="text-muted">Platform: <strong>@Model.Description</strong></p>
+        <header class="detail__header">
+            <p class="hero__role">@Model.PlatformLabel</p>
+            <h1 class="page__title">@Model.Title</h1>
+            <p class="detail__summary">@Model.Summary</p>
+            <ul class="tags tags--large" aria-label="Built with">
+                @foreach (var tech in Model.TechStack)
+                {
+                    <li>@tech</li>
+                }
+            </ul>
+            <div class="hero__actions">
+                @if (!string.IsNullOrEmpty(Model.LiveUrl))
+                {
+                    <a class="button button--solid" href="@Model.LiveUrl" target="_blank" rel="noopener">Open live site</a>
+                }
+                @if (!string.IsNullOrEmpty(Model.GitHubUrl))
+                {
+                    <a class="button @(string.IsNullOrEmpty(Model.LiveUrl) ? "button--solid" : "")" href="@Model.GitHubUrl" target="_blank" rel="noopener"><partial name="_GitHubIcon" />View code on GitHub</a>
+                }
+            </div>
+        </header>
 
-    @if (!string.IsNullOrEmpty(Model.ImageName))
-    {
-        var images = Model.ImageName.Split(',', StringSplitOptions.RemoveEmptyEntries);
-        <div class="row">
-            @foreach (var img in images)
+        <div class="detail__info">
+            <div class="detail__description">
+                @foreach (var paragraph in Model.Description)
+                {
+                    <p>@paragraph</p>
+                }
+            </div>
+            @if (Model.Features.Any())
             {
-                <div class="col-md-4 mb-3">
-                    <img src="~/images/Project/@img.Trim()" class="img-fluid rounded shadow-sm" alt="Project image" />
+                <div class="detail__features">
+                    <h2>Features</h2>
+                    <ul>
+                        @foreach (var feature in Model.Features)
+                        {
+                            <li>@feature</li>
+                        }
+                    </ul>
                 </div>
             }
         </div>
-    }
-    else
-    {
-        <p>No images available for this project.</p>
-    }
 
-    <a href="@Url.Action("Index", "Portfolio")" class="btn btn-secondary mt-4">Back to Portfolio</a>
-</div>
+        @if (Model.Images.Any())
+        {
+            <section aria-labelledby="screens-heading">
+                <h2 id="screens-heading" class="section-title">Screenshots</h2>
+                <ul class="gallery @(isPhone ? "gallery--phone" : "gallery--web")">
+                    @for (var i = 0; i < Model.Images.Count; i++)
+                    {
+                        var image = Model.Images[i];
+                        var eager = i < 3;
+                        <li>
+                            <figure>
+                                <a href="@image.Url" data-lightbox="@i" aria-label="Open @image.Caption full size">
+                                    <partial name="_Screenshot" model="new ScreenshotViewModel(image, Model.Platform, eager)" />
+                                </a>
+                                <figcaption>@image.Caption</figcaption>
+                            </figure>
+                        </li>
+                    }
+                </ul>
+            </section>
+        }
+        else
+        {
+            <p class="muted">Screenshots for this project are coming soon.</p>
+        }
+
+        @if (next != null && next.Id != Model.Id)
+        {
+            <a class="next-project" href="@Url.Action("Detail", "Project", new { id = next.Id })">
+                <span class="next-project__label">Next project</span>
+                <span class="next-project__title">@next.Title</span>
+            </a>
+        }
+    </div>
+</article>
+
+<dialog class="lightbox" id="lightbox" aria-label="Screenshot viewer">
+    <form method="dialog"><button class="lightbox__close" aria-label="Close">Close</button></form>
+    <figure>
+        <img alt="" />
+        <figcaption></figcaption>
+    </figure>
+    <div class="lightbox__nav">
+        <button type="button" data-step="-1">Previous</button>
+        <span class="lightbox__count"></span>
+        <button type="button" data-step="1">Next</button>
+    </div>
+</dialog>

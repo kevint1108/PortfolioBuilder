@@ -9,45 +9,53 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PortfolioBuilder
 build_property.RootNamespace = PortfolioBuilder
-build_property.ProjectDir = C:\Users\terik\Downloads\PortfolioBuilder-main\PortfolioBuilder-main\PortfolioBuilder\
+build_property.ProjectDir = C:\Users\terik\Documents\GitHub\PortfolioBuilder-main\PortfolioBuilder-main\PortfolioBuilder-main\PortfolioBuilder\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\terik\Downloads\PortfolioBuilder-main\PortfolioBuilder-main\PortfolioBuilder
+build_property.MSBuildProjectDirectory = C:\Users\terik\Documents\GitHub\PortfolioBuilder-main\PortfolioBuilder-main\PortfolioBuilder-main\PortfolioBuilder
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/terik/Downloads/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Portfolio/Index.cshtml]
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Portfolio/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydGZvbGlvXEFib3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Portfolio/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydGZvbGlvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/terik/Downloads/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Portfolio/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9ydGZvbGlvXFByaXZhY3kuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/terik/Downloads/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Project/Detail.cshtml]
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Project/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdFxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/terik/Downloads/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Shared/Error.cshtml]
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/terik/Downloads/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Shared/_GitHubIcon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9HaXRIdWJJY29uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/terik/Downloads/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/_ViewImports.cshtml]
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Shared/_ProjectCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qcm9qZWN0Q2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Shared/_Screenshot.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TY3JlZW5zaG90LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/terik/Downloads/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/_ViewStart.cshtml]
+[C:/Users/terik/Documents/GitHub/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/terik/Downloads/PortfolioBuilder-main/PortfolioBuilder-main/PortfolioBuilder/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-lajpp92wjg

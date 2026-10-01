@@ -1,0 +1,18 @@
+@model ScreenshotViewModel
+@{
+    var isPhone = Model.Platform == ProjectPlatform.Mobile;
+    var loading = Model.Eager ? "eager" : "lazy";
+}
+@if (isPhone)
+{
+    <div class="device device--phone">
+        <img src="@Model.Image.Url" alt="@Model.Image.Caption" loading="@loading" width="1080" height="2340" />
+    </div>
+}
+else
+{
+    <div class="device device--browser">
+        <div class="device__bar" aria-hidden="true"><span></span><span></span><span></span></div>
+        <img src="@Model.Image.Url" alt="@Model.Image.Caption" loading="@loading" />
+    </div>
+}

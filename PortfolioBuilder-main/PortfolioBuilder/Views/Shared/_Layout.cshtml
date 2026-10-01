@@ -1,45 +1,77 @@
-﻿<!DOCTYPE html>
+@using PortfolioBuilder.Data
+@{
+    var owner = PortfolioData.Portfolio;
+    var pageTitle = ViewData["Title"] as string;
+    var fullTitle = string.IsNullOrEmpty(pageTitle) ? $"{owner.FullName} · {owner.Title}" : $"{pageTitle} · {owner.FullName}";
+    var description = ViewData["Description"] as string ?? owner.Intro;
+    var homeUrl = Url.Action("Index", "Portfolio");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Portfolio Builder</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@fullTitle</title>
+    <meta name="description" content="@description" />
+    <meta property="og:title" content="@fullTitle" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:image" content="@owner.Avatar" />
+    <link rel="icon" href="~/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Portfolio Builder</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Portfolio" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Portfolio Builder - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <header class="site-header">
+        <div class="wrap site-header__inner">
+            <a class="site-header__name" href="@homeUrl">@owner.FullName</a>
+            <nav aria-label="Main">
+                <ul class="site-nav">
+                    <li><a href="@(homeUrl)#projects">Projects</a></li>
+                    <li><a asp-controller="Portfolio" asp-action="About">About</a></li>
+                    @if (!string.IsNullOrEmpty(owner.GitHubUrl))
+                    {
+                        <li><a href="@owner.GitHubUrl" target="_blank" rel="noopener"><partial name="_GitHubIcon" /><span>GitHub</span></a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer" id="contact">
+        <div class="wrap site-footer__inner">
+            <div>
+                <p class="site-footer__lead">Want to work together?</p>
+                <ul class="contact-list">
+                    @if (!string.IsNullOrEmpty(owner.Email))
+                    {
+                        <li><a href="mailto:@owner.Email">@owner.Email</a></li>
+                    }
+                    @if (!string.IsNullOrEmpty(owner.LinkedInUrl))
+                    {
+                        <li><a href="@owner.LinkedInUrl" target="_blank" rel="noopener">LinkedIn</a></li>
+                    }
+                    @if (!string.IsNullOrEmpty(owner.GitHubUrl))
+                    {
+                        <li><a href="@owner.GitHubUrl" target="_blank" rel="noopener">GitHub</a></li>
+                    }
+                    @if (!string.IsNullOrEmpty(owner.ResumeUrl))
+                    {
+                        <li><a href="@owner.ResumeUrl" target="_blank" rel="noopener">Résumé</a></li>
+                    }
+                </ul>
+            </div>
+            <p class="site-footer__copy">&copy; @DateTime.Now.Year @owner.FullName</p>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

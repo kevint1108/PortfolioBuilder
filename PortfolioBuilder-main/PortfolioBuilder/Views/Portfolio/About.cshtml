@@ -1,0 +1,27 @@
+@model Portfolio
+@{
+    ViewData["Title"] = "About";
+}
+
+<section class="page">
+    <div class="wrap about">
+        <img class="about__photo" src="@Model.Avatar" alt="Photo of @Model.FullName" width="2160" height="2160" />
+        <div class="about__text">
+            <h1 class="page__title">About me</h1>
+            @foreach (var paragraph in Model.About)
+            {
+                <p>@paragraph</p>
+            }
+            <p>
+                This site is itself one of my projects: an ASP.NET Core MVC app that lists my work, written in C#.
+            </p>
+            <div class="hero__actions">
+                <a class="button button--solid" asp-controller="Portfolio" asp-action="Index" asp-fragment="projects">See my projects</a>
+                @if (!string.IsNullOrEmpty(Model.GitHubUrl))
+                {
+                    <a class="button" href="@Model.GitHubUrl" target="_blank" rel="noopener"><partial name="_GitHubIcon" />GitHub profile</a>
+                }
+            </div>
+        </div>
+    </div>
+</section>

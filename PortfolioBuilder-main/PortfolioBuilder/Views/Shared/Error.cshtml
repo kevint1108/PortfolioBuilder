@@ -1,19 +1,25 @@
-﻿@model Portfolio
+@model ErrorViewModel
 @{
-    ViewData["Title"] = "Error";
+    ViewData["Title"] = Model.IsNotFound ? "Page not found" : "Something went wrong";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
-
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>The Development environment shouldn't be enabled for deployed applications.</strong>
-    It can result in displaying sensitive information from exceptions to end users.
-    For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
-    and restarting the app.
-</p>
+<section class="page">
+    <div class="wrap error-page">
+        <p class="error-page__code">@Model.StatusCode</p>
+        @if (Model.IsNotFound)
+        {
+            <h1 class="page__title">This page doesn't exist</h1>
+            <p>The link may be old or mistyped. Head back to the home page to see all projects.</p>
+        }
+        else
+        {
+            <h1 class="page__title">Something went wrong</h1>
+            <p>The server couldn't load this page. Try again in a moment, or go back to the home page.</p>
+            @if (Model.ShowRequestId)
+            {
+                <p class="muted">Request ID: <code>@Model.RequestId</code></p>
+            }
+        }
+        <a class="button button--solid" asp-controller="Portfolio" asp-action="Index">Go to home page</a>
+    </div>
+</section>

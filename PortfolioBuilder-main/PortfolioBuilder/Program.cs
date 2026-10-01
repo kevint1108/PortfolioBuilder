@@ -1,10 +1,15 @@
+using Microsoft.AspNetCore.HttpOverrides;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://*:{port}");
+// Hosting platforms such as Render and Railway pass the port in the PORT variable.
+// Locally, the URLs from Properties/launchSettings.json are used instead.
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(port))
+{
+    builder.WebHost.UseUrls($"http://*:{port}");
 }
 
 // The hosting platform terminates HTTPS and forwards the request over HTTP.
@@ -21,8 +26,7 @@ app.UseForwardedHeaders();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseExceptionHandler("/error");
     app.UseHsts();
 }
 
@@ -30,11 +34,10 @@ app.UseStatusCodePagesWithReExecute("/error/{0}");
 
 if (string.IsNullOrEmpty(port))
 {
-app.UseHttpsRedirection();
+    app.UseHttpsRedirection();
 }
 
 app.UseStaticFiles();
-
 app.UseRouting();
 app.UseAuthorization();
 
