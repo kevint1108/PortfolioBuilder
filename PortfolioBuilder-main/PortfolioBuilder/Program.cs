@@ -5,10 +5,20 @@ builder.Services.AddControllersWithViews();
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 builder.WebHost.UseUrls($"http://*:{port}");
+}
+
+// The hosting platform terminates HTTPS and forwards the request over HTTP.
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseForwardedHeaders();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -16,11 +26,16 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseStatusCodePagesWithReExecute("/error/{0}");
+
+if (string.IsNullOrEmpty(port))
+{
 app.UseHttpsRedirection();
+}
+
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
