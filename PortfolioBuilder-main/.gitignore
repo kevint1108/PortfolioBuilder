@@ -16,3 +16,6 @@ publish/
 # OS
 .DS_Store
 Thumbs.db
+
+# Static site build output (Vercel)
+web/dist/

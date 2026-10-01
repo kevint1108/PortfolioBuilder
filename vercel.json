@@ -1,0 +1,55 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node web/build.mjs",
+  "outputDirectory": "web/dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/Project/Detail/6",
+      "destination": "/projects/12h-food-delivery",
+      "permanent": true
+    },
+    {
+      "source": "/Project/Detail/1",
+      "destination": "/projects/quick-kids-quiz",
+      "permanent": true
+    },
+    {
+      "source": "/Project/Detail/4",
+      "destination": "/projects/trivia-game",
+      "permanent": true
+    },
+    {
+      "source": "/Project/Detail/5",
+      "destination": "/projects/flutter-dice-app",
+      "permanent": true
+    },
+    {
+      "source": "/Project/Detail/2",
+      "destination": "/projects/todo-app",
+      "permanent": true
+    },
+    {
+      "source": "/Project/Detail/3",
+      "destination": "/projects/ice-cream-shopping-cart",
+      "permanent": true
+    },
+    {
+      "source": "/Portfolio/About",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/Portfolio/Privacy",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/Portfolio",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
